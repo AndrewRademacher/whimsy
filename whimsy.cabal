@@ -23,4 +23,5 @@ executable whimsy
                     ,   servant-server
                     ,   text
                     ,   time
+                    ,   transformers
                     ,   warp
