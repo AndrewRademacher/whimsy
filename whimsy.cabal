@@ -16,6 +16,11 @@ executable whimsy
     build-depends:      base                ==4.*
 
                     ,   aeson
+                    ,   aeson-casing
+                    ,   containers
+                    ,   either
                     ,   servant
                     ,   servant-server
+                    ,   text
+                    ,   time
                     ,   warp
