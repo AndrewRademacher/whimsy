@@ -2,15 +2,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeOperators     #-}
 
-module Impl.IORef1
+module Impl.IORef2
     ( runApp
     ) where
 
 import           Control.Monad.IO.Class
 import           Control.Monad.Trans.Either
+import           Data.HashMap.Strict        (HashMap)
+import qualified Data.HashMap.Strict        as Map
 import           Data.IORef
-import           Data.Map.Strict            (Map)
-import qualified Data.Map.Strict            as Map
 import           Data.Proxy
 import           Data.Time
 import           Network.Wai.Handler.Warp   (run)
@@ -21,7 +21,7 @@ import           API
 
 data Environment
     = Environment
-        { serverFortuneMap :: IORef (Map Email Fortune)
+        { serverFortuneMap :: IORef (HashMap Email Fortune)
         }
 
 runApp :: IO ()

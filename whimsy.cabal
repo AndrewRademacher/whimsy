@@ -21,6 +21,7 @@ executable whimsy
                     ,   aeson-casing
                     ,   containers
                     ,   either
+                    ,   hashable
                     ,   servant
                     ,   servant-server
                     ,   text
