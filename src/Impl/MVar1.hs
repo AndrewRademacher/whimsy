@@ -4,6 +4,8 @@
 
 module Impl.MVar1
     ( runApp
+    , createPlayer
+    , tradeFortunes
     ) where
 
 import           Control.Concurrent.MVar

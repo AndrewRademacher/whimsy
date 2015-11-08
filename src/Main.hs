@@ -4,6 +4,7 @@ import qualified Impl.IORef1        as IORef1
 import qualified Impl.IORef2        as IORef2
 import qualified Impl.MVar1         as MVar1
 import qualified Impl.MVar2         as MVar2
+import qualified Impl.STM1          as STM1
 import qualified Impl.TVar1         as TVar1
 
 main :: IO ()
@@ -15,5 +16,6 @@ main = do
         "mvar-1"  -> MVar1.runApp
         "mvar-2"  -> MVar2.runApp
         "tvar-1"  -> TVar1.runApp
+        "stm-1"   -> STM1.runApp
         v         ->
             putStrLn $ "Invalid implementation: " ++ v

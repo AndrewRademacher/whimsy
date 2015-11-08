@@ -5,7 +5,7 @@ build: sandbox
 
 sandbox:
 	cabal sandbox init
-	cabal install --only-dependencies --enable-tests
+	cabal install --only-dependencies --enable-tests --enable-benchmarks
 	touch sandbox
 
 clean:

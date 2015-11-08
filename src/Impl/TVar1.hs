@@ -4,6 +4,8 @@
 
 module Impl.TVar1
     ( runApp
+    , createPlayer
+    , tradeFortunes
     ) where
 
 import           Control.Concurrent.STM

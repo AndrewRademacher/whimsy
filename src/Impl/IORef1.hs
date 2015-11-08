@@ -4,6 +4,8 @@
 
 module Impl.IORef1
     ( runApp
+    , createPlayer
+    , tradeFortunes
     ) where
 
 import           Control.Monad.IO.Class
