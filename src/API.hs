@@ -5,6 +5,7 @@
 
 module API where
 
+import           Control.DeepSeq
 import           Data.Aeson
 import           Data.Aeson.Casing
 import           Data.Text         (Text)
@@ -26,6 +27,7 @@ data NewPlayer
         }
     deriving (Eq, Ord, Show, Generic)
 
+instance NFData NewPlayer
 instance FromJSON NewPlayer where
     parseJSON = genericParseJSON $ aesonPrefix snakeCase
 
@@ -36,6 +38,7 @@ data Fortune
         }
     deriving (Eq, Ord, Show, Generic)
 
+instance NFData Fortune
 instance ToJSON Fortune where
     toJSON = genericToJSON $ aesonPrefix snakeCase
 
@@ -46,5 +49,6 @@ data FortunePair
         }
     deriving (Eq, Ord, Show, Generic)
 
+instance NFData FortunePair
 instance ToJSON FortunePair where
     toJSON = genericToJSON $ aesonPrefix snakeCase

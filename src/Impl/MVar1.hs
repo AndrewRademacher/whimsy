@@ -2,12 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeOperators     #-}
 
-module Impl.MVar1
-    ( Environment (..)
-    , runApp
-    , createPlayer
-    , tradeFortunes
-    ) where
+module Impl.MVar1 where
 
 import           Control.Concurrent.MVar
 import           Control.Monad.IO.Class
@@ -29,11 +24,15 @@ data Environment
 
 runApp :: IO ()
 runApp = do
-    fm <- newMVar Map.empty
-    let env = Environment fm
+    env <- createEnvironment
     run 8080 $ serve (Proxy :: Proxy API)
         (    createPlayer env
         :<|> tradeFortunes env)
+
+createEnvironment :: IO Environment
+createEnvironment = do
+    fm <- newMVar Map.empty
+    return $ Environment fm
 
 createPlayer :: Environment -> NewPlayer -> EitherT ServantErr IO ()
 createPlayer env player = do

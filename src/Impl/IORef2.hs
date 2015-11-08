@@ -2,12 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeOperators     #-}
 
-module Impl.IORef2
-    ( Environment (..)
-    , runApp
-    , createPlayer
-    , tradeFortunes
-    ) where
+module Impl.IORef2 where
 
 import           Control.Monad.IO.Class
 import           Control.Monad.Trans.Either
@@ -29,11 +24,15 @@ data Environment
 
 runApp :: IO ()
 runApp = do
-    fm <- newIORef Map.empty
-    let env = Environment fm
+    env <- createEnvironment
     run 8080 $ serve (Proxy :: Proxy API)
         (    createPlayer env
         :<|> tradeFortunes env)
+
+createEnvironment :: IO Environment
+createEnvironment = do
+    fm <- newIORef Map.empty
+    return $ Environment fm
 
 createPlayer :: Environment -> NewPlayer -> EitherT ServantErr IO ()
 createPlayer env player = do

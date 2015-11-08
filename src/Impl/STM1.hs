@@ -2,12 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeOperators     #-}
 
-module Impl.STM1
-    ( Environment (..)
-    , runApp
-    , createPlayer
-    , tradeFortunes
-    ) where
+module Impl.STM1 where
 
 import           Control.Concurrent.STM
 import           Control.Monad.IO.Class
@@ -29,11 +24,15 @@ data Environment
 
 runApp :: IO ()
 runApp = do
-    fm <- Map.newIO
-    let env = Environment fm
+    env <- createEnvironment
     run 8080 $ serve (Proxy :: Proxy API)
         (    createPlayer env
         :<|> tradeFortunes env)
+
+createEnvironment :: IO Environment
+createEnvironment = do
+    fm <- Map.newIO
+    return $ Environment fm
 
 createPlayer :: Environment -> NewPlayer -> EitherT ServantErr IO ()
 createPlayer env player = do
