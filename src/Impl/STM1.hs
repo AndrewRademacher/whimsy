@@ -3,7 +3,8 @@
 {-# LANGUAGE TypeOperators     #-}
 
 module Impl.STM1
-    ( runApp
+    ( Environment (..)
+    , runApp
     , createPlayer
     , tradeFortunes
     ) where

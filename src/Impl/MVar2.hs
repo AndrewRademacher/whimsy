@@ -3,7 +3,8 @@
 {-# LANGUAGE TypeOperators     #-}
 
 module Impl.MVar2
-    ( runApp
+    ( Environment (..)
+    , runApp
     , createPlayer
     , tradeFortunes
     ) where
