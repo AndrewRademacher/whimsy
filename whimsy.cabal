@@ -24,6 +24,7 @@ executable whimsy
                     ,   hashable
                     ,   servant
                     ,   servant-server
+                    ,   stm
                     ,   text
                     ,   time
                     ,   transformers
